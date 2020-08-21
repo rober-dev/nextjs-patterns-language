@@ -1,3 +1,5 @@
+// Vendor libs
+import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 class BaseDocument extends Document {
