@@ -8,17 +8,27 @@ import Header from '../components/header';
 
 // Component definition
 const HomePage = ({ t }) => {
+  // Event handlers
+  const buttonHandler = e => {
+    e.preventDefault();
+    const msg = t('common:msg', { username: 'Rober' });
+    alert(msg);
+  };
+
   return (
     <>
       <Header />
-      <h1>{t('common:home_page')}</h1>
+      <h1>{t('home:title')}</h1>
+      <button type='button' onClick={e => buttonHandler(e)}>
+        {t('common:show_translated_message')}
+      </button>
     </>
   );
 };
 
 // Exportation
 HomePage.getInitialProps = async () => ({
-  namespacesRequired: ['common', 'header']
+  namespacesRequired: ['common', 'header', 'home']
 });
 
 // PropTypes

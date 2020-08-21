@@ -1,5 +1,6 @@
 {
-  "home_page": "Página inicial",
   "page_not_found": "La página no existe",
-  "header": "Cabecera"
+  "title": "Cabecera",
+  "show_translated_message": "Mostrar mensaje traducido con variables por js",
+  "msg": "Hola {{username}}. Saludos desde next-i18next"
 }

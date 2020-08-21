@@ -1,5 +1,6 @@
 {
-  "home_page": "Home page",
   "page_not_found": "Page not found",
-  "header": "Header"
+  "title": "Header",
+  "show_translated_message": "Show translated message with variables by js",
+  "msg": "Hello {{username}}. Greeting from next-i18next"
 }
