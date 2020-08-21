@@ -12,6 +12,7 @@ const HomePage = ({ t }) => {
   const buttonHandler = e => {
     e.preventDefault();
     const msg = t('common:msg', { username: 'Rober' });
+    // eslint-disable-next-line no-alert
     alert(msg);
   };
 
