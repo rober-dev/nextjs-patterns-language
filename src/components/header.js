@@ -1,24 +1,17 @@
 // Vendor libs
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { i18n, withTranslation, Link } from '../lib/i18n';
+import { withTranslation, Link } from '../lib/i18n';
+
+// Custom libs
+const { allLanguages } = require('next/config').default().publicRuntimeConfig;
 
 // Component definition
-const Header = ({ t }) => {
-  // Component state members
-  const [lng, setLng] = useState('');
-
-  useEffect(() => {
-    if (i18n && i18n.language) {
-      setLng(i18n.language.toLowerCase());
-    }
-  }, [i18n.language]);
-
+const Header = ({ t, i18n }) => {
   // Event handlers
   const changeLangageHandler = (e, l) => {
     e.preventDefault();
     i18n.changeLanguage(l.toLowerCase());
-    setLng(l.toLowerCase());
   };
 
   return (
@@ -34,13 +27,19 @@ const Header = ({ t }) => {
         </Link>
       </div>
       <div>
-        <span>{lng.toUpperCase()} - &nbsp;</span>
-        <button type='button' onClick={e => changeLangageHandler(e, 'ES')}>
-          ES
-        </button>
-        <button type='button' onClick={e => changeLangageHandler(e, 'EN')}>
-          EN
-        </button>
+        <span>{i18n.language.toUpperCase()} - &nbsp;</span>
+        {allLanguages &&
+          allLanguages.map(l => {
+            return (
+              <button
+                key={l}
+                type='button'
+                onClick={e => changeLangageHandler(e, l)}
+              >
+                {l.toUpperCase()}
+              </button>
+            );
+          })}
       </div>
     </>
   );
@@ -48,7 +47,11 @@ const Header = ({ t }) => {
 
 // PropTypes
 Header.propTypes = {
-  t: PropTypes.func.isRequired
+  t: PropTypes.func.isRequired,
+  i18n: PropTypes.shape({
+    language: PropTypes.string,
+    changeLanguage: PropTypes.func.isRequired
+  })
 };
 
 // Exportation

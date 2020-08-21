@@ -2,6 +2,7 @@ import React from 'react';
 import App from 'next/app';
 import { appWithTranslation } from '../lib/i18n';
 
+// eslint-disable-next-line react/prop-types
 const BaseApp = ({ Component, pageProps }) => {
   return (
     <>

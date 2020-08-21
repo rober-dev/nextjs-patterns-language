@@ -1,11 +1,13 @@
 const { nextI18NextRewrites } = require('next-i18next/rewrites');
 
-const localeSubpaths = {
-  es: 'es',
-  en: 'en'
-};
-
+const allLanguages = ['es', 'en'];
 const defaultLanguage = 'es';
+
+const localeSubpaths = {};
+allLanguages.forEach(l => {
+  localeSubpaths[l] = l;
+});
+
 const otherLanguages = Object.keys(localeSubpaths).filter(
   l => l !== defaultLanguage
 );
@@ -16,6 +18,7 @@ module.exports = {
   publicRuntimeConfig: {
     localeSubpaths,
     defaultLanguage,
-    otherLanguages
+    otherLanguages,
+    allLanguages
   }
 };
